@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      scale: {
+        '102': '1.02',
+      },
+      textShadow: {
+        'lg': '2px 2px 4px rgba(0, 0, 0, 0.3)',
+      },
+    },
   },
   plugins: [],
 }
