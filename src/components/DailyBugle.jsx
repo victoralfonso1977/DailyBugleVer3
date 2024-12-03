@@ -1,8 +1,9 @@
+// Import necessary dependencies from React and our icon library
 import React, { useState, useEffect } from 'react';
 import { Newspaper, Home, Mail, MessageCircle, Camera } from 'lucide-react';
 
-// Navigation items are defined separately for better organization
-// Think of this as our menu structure that can be easily modified
+// Define our navigation items in a separate array for better organization
+// Each item has a name and an associated icon component
 const navItems = [
   { name: 'HOME', icon: Home },
   { name: 'NEWS', icon: Newspaper },
@@ -11,8 +12,8 @@ const navItems = [
   { name: 'CONTACT', icon: Mail }
 ];
 
-// NewsCard is a reusable component for displaying individual news articles
-// It's like a template that we can fill with different content
+// The NewsCard component displays individual news articles
+// It accepts title, excerpt, and imageUrl as props
 const NewsCard = ({ title, excerpt, imageUrl }) => {
   return (
     <div className="overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white rounded-lg">
@@ -31,8 +32,8 @@ const NewsCard = ({ title, excerpt, imageUrl }) => {
   );
 };
 
-// Breaking news banner with animation
-// This creates the scrolling text effect at the top of our page
+// The BreakingNews component creates an animated news ticker
+// It uses React hooks to manage the animation state
 const BreakingNews = () => {
   const [position, setPosition] = useState(100);
 
@@ -40,6 +41,7 @@ const BreakingNews = () => {
     const animation = setInterval(() => {
       setPosition(prev => prev <= -100 ? 100 : prev - 0.5);
     }, 50);
+    // Cleanup function to prevent memory leaks
     return () => clearInterval(animation);
   }, []);
 
@@ -55,8 +57,8 @@ const BreakingNews = () => {
   );
 };
 
-// Navigation component that creates our menu bar
-// Maps over our navItems array to create each menu item
+// The Navigation component creates our menu bar
+// It maps over the navItems array to create each menu item
 const Navigation = () => {
   return (
     <nav className="bg-gray-900 p-4">
@@ -76,7 +78,8 @@ const Navigation = () => {
   );
 };
 
-// NewsSection component that displays our grid of news articles
+// The NewsSection component displays our grid of news articles
+// It contains sample news data and renders NewsCard components
 const NewsSection = () => {
   const newsItems = [
     {
@@ -105,7 +108,8 @@ const NewsSection = () => {
   );
 };
 
-// Main DailyBugle component that brings everything together
+// The main DailyBugle component that brings everything together
+// It renders the header, navigation, breaking news, and news section
 const DailyBugle = () => {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -125,4 +129,5 @@ const DailyBugle = () => {
   );
 };
 
+// Export the DailyBugle component as the default export
 export default DailyBugle;
